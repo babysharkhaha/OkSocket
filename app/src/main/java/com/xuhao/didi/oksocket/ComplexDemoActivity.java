@@ -131,7 +131,7 @@ public class ComplexDemoActivity extends AppCompatActivity {
         @Override
         public void onSocketWriteResponse(ConnectionInfo info, String action, ISendable data) {
             byte[] bytes = data.parse();
-            bytes = Arrays.copyOfRange(bytes, 4, bytes.length);
+            bytes = Arrays.copyOfRange(bytes, 26, bytes.length);
             String str = new String(bytes, Charset.forName("utf-8"));
             JsonObject jsonObject = new JsonParser().parse(str).getAsJsonObject();
             int cmd = jsonObject.get("cmd").getAsInt();
@@ -195,7 +195,7 @@ public class ComplexDemoActivity extends AppCompatActivity {
         mReceList.setLayoutManager(manager2);
         mReceList.setAdapter(mReceLogAdapter);
 
-        mInfo = new ConnectionInfo("104.238.184.237", 8080);
+        mInfo = new ConnectionInfo("54.255.135.233", 28902);
 
         final Handler handler = new Handler(Looper.getMainLooper());
         OkSocketOptions.Builder builder = new OkSocketOptions.Builder();
@@ -286,6 +286,7 @@ public class ComplexDemoActivity extends AppCompatActivity {
                             .build();
                     mManager.option(okOptions);
                 } catch (NumberFormatException e) {
+                    e.printStackTrace();
                 }
             }
         });

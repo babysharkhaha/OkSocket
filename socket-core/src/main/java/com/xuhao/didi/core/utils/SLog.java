@@ -1,11 +1,11 @@
 package com.xuhao.didi.core.utils;
 
+
 /**
  * Created by xuhao on 2017/6/9.
  */
 
 public class SLog {
-
     private static boolean isDebug;
 
     public static void setIsDebug(boolean isDebug) {

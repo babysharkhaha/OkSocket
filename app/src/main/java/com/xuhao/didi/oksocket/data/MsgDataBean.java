@@ -13,18 +13,31 @@ import java.nio.charset.Charset;
 
 public class MsgDataBean implements ISendable {
     private String content = "";
-
+    private short cmd = 20034;
     public MsgDataBean(String content) {
         this.content = content;
+    }
+    public MsgDataBean(String content,short cmd) {
+        this.content = content;
+        this.cmd = cmd;
     }
 
     @Override
     public byte[] parse() {
-        byte[] body = content.getBytes(Charset.defaultCharset());
-        ByteBuffer bb = ByteBuffer.allocate(4 + body.length);
+        byte[] body = null;
+        if(null!=content){
+            body = content.getBytes(Charset.defaultCharset());
+        }
+        int length = body == null ? 26 : (26 + body.length);
+        ByteBuffer bb = ByteBuffer.allocate(length);
         bb.order(ByteOrder.BIG_ENDIAN);
-        bb.putInt(body.length);
-        bb.put(body);
+        bb.putInt(length);
+        bb.putLong(sequenceId);
+        bb.putShort(cmd);
+        bb.putInt(version);
+        bb.put(terminal.getBytes());
+        bb.putInt(requestid);
+        if (body != null) bb.put(body);
         return bb.array();
     }
 }

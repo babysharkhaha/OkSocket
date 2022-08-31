@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.xuhao.didi.core.iocore.interfaces.ISendable;
 import com.xuhao.didi.core.pojo.OriginalData;
 import com.xuhao.didi.core.utils.SLog;
@@ -72,7 +74,7 @@ public class DemoActivity extends AppCompatActivity implements IClientIOCallback
         mServerBtn = findViewById(R.id.btn3);
         mAdminBtn = findViewById(R.id.admin);
         mIPTv = findViewById(R.id.ip);
-
+        Logger.addLogAdapter(new AndroidLogAdapter());
         OkServerOptions.setIsDebug(true);
         OkSocketOptions.setIsDebug(true);
         SLog.setIsDebug(true);
