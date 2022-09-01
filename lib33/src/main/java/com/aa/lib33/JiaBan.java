@@ -32,12 +32,9 @@ public class JiaBan {
         System.out.println("haha");
         System.out.println(s.substring(s.indexOf("小时") - 3, s.indexOf("小时")));
         System.out.println(Arrays.toString(s.split("\n")));
-        double jiaban = 0 ;
+        double jiaban = 0;
         for(String num : s.split("\n")){
-            num = num.substring(s.indexOf("小时") - 3, s.indexOf("小时"));
-            if(num.contains("小时")){
-                num = num.substring(0,num.indexOf("小时"));
-            }
+            num = num.substring(num.indexOf("小时") - 3, num.indexOf("小时"));
             System.out.println(num);
             jiaban += Double.parseDouble(num);
         }
