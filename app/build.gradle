@@ -9,8 +9,8 @@ android {
             storePassword '123456'
         }
     }
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "com.xuhao.android.oksocket"
         minSdkVersion 14
